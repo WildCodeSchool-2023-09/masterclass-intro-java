@@ -6,7 +6,6 @@ public class Hangman {
 
     public static void main(String[] args) {
 
-
         String secret;
         System.out.println("Choose the secret word :");
 
@@ -18,12 +17,11 @@ public class Hangman {
 
         char[] secretLetters = new char[secret.length()];
 
-        for(int i = 0; i < secret.length(); i++) {
+        for (int i = 0; i < secret.length(); i++) {
             secretLetters[i] = '_';
         }
 
-
-        while(!guessed.equals(secret)) {
+        while (!guessed.equals(secret)) {
             System.out.println("Remaining tries : " + remainingTries);
             System.out.println("Pick a letter : ");
 
@@ -31,14 +29,14 @@ public class Hangman {
 
             char letter = userInput.charAt(0);
 
-            if(!Character.isLetter(letter)) {
+            if (!Character.isLetter(letter)) {
                 System.out.println("❌ - Please select a correct letter");
                 continue;
             }
 
-            if(secret.contains(String.valueOf(letter))) {
-                for(int i =0; i < secret.length(); i++) {
-                    if(secret.charAt(i) == letter) {
+            if (secret.contains(String.valueOf(letter))) {
+                for (int i = 0; i < secret.length(); i++) {
+                    if (secret.charAt(i) == letter) {
                         secretLetters[i] = letter;
                     }
                 }
@@ -49,28 +47,20 @@ public class Hangman {
                 remainingTries--;
             }
 
-
-            if(secret.equals(new String(secretLetters))) {
+            if (secret.equals(new String(secretLetters))) {
                 System.out.println("Good job ! You found it ! 🎉");
                 break;
             }
 
-            if(remainingTries == 0) {
+            if (remainingTries == 0) {
                 System.out.println("😱 - Game over !");
                 break;
             }
-
-
 
         }
         scanner.close();
 
     }
-
-
-
-
-
 
     static void displayHangman(int remainingTries) {
         // Simple hangman drawing based on attempts left
@@ -145,6 +135,5 @@ public class Hangman {
                 break;
         }
     }
-
 
 }
